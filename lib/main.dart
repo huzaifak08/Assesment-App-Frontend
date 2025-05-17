@@ -1,8 +1,18 @@
-import 'package:assessment_app/views/auth/sign_in_view.dart';
+import 'package:assessment_app/providers/app_provider_container.dart';
+import 'package:assessment_app/views/splash/splash_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(
+    ProviderScope(
+      child: UncontrolledProviderScope(
+        container: AppProviderContainer.instance,
+        child: MyApp(),
+      ),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -15,7 +25,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const SignInView(),
+      home: const SplashView(),
     );
   }
 }

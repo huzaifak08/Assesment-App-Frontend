@@ -3,14 +3,14 @@
 enum Environment { local, localIP, development, production, lounging }
 
 class Endpoints {
-  static Environment currentEnvironment = Environment.local;
+  static Environment currentEnvironment = Environment.localIP;
 
   static String get baseUrl {
     switch (currentEnvironment) {
       case Environment.local:
         return 'http://localhost:3000';
       case Environment.localIP:
-        return "http://192.168.100.114:3000";
+        return "http://192.168.1.6:3000";
       case Environment.development:
         return 'https://qroundtable.theqlu.com';
       case Environment.production:
@@ -25,7 +25,7 @@ class Endpoints {
       case Environment.local:
         return 'http://localhost:3000';
       case Environment.localIP:
-        return 'ws://192.168.100.114:3000';
+        return 'ws://192.168.1.6:3000';
       case Environment.development:
         return 'wss://qroundtable.theqlu.com';
       case Environment.production:
