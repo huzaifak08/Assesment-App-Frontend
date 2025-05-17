@@ -1,5 +1,6 @@
 import 'package:assessment_app/clients/api_client.dart';
 import 'package:assessment_app/helpers/endpoints.dart';
+import 'package:assessment_app/helpers/sp_helper.dart';
 
 class AuthService {
   Future<Map<String, dynamic>> registerUser({
@@ -21,11 +22,11 @@ class AuthService {
         data: body,
       );
 
-      print(
-        "Status: ${response.data['status']} and message: ${response.data['message']}",
-      );
-
       if (response.statusCode == 200 || response.statusCode == 201) {
+        if (response.data['status'] == true) {
+          SpHelper().setAuthToken(response.data['token']);
+        }
+
         return {
           'status': response.data['status'],
           'message': response.data['message'],
@@ -54,11 +55,11 @@ class AuthService {
         data: body,
       );
 
-      print(
-        "Status: ${response.data['status']} and message: ${response.data['message']}",
-      );
-
       if (response.statusCode == 200) {
+        if (response.data['status'] == true) {
+          SpHelper().setAuthToken(response.data['token']);
+        }
+
         return {
           'status': response.data['status'],
           'message': response.data['message'],
