@@ -1,4 +1,5 @@
 import 'package:assessment_app/helpers/colors.dart';
+import 'package:assessment_app/views/gemini/ai_view.dart';
 
 import 'package:assessment_app/views/quotes/quotes_view.dart';
 import 'package:assessment_app/views/test_view.dart';
@@ -16,8 +17,8 @@ class _HomeViewState extends State<HomeView> {
 
   static const List<Widget> _widgetOptions = <Widget>[
     QuotesView(),
+    AiView(),
     TestView(),
-    QuotesView(),
   ];
 
   void _onItemTapped(int index) {
