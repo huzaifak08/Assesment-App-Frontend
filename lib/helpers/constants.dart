@@ -1,1 +1,2 @@
 const String GEMINI_API_KEY = "AIzaSyCX6V4w32aLwc2ugPMZeBBuk5AXAQWiU04";
+const String OPENWEATHER_API_KEY = "abe17d8c6d3c6af1394187e6bc38ee82";
