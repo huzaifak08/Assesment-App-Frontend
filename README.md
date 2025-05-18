@@ -1,108 +1,128 @@
 # Assessment App
 
-A comprehensive Flutter application for conducting and managing assessments.
-
-## Table of Contents
-
-- [Overview](#overview)
-- [Features](#features)
-- [Screenshots](#screenshots)
-- [API Used](#api-used)
-- [Packages Used](#packages-used)
-- [Getting Started](#getting-started)
-- [Project Structure](#project-structure)
-- [How to Run](#how-to-run)
-- [Contributing](#contributing)
-- [License](#license)
-
-## Overview
-
-**Assessment App** allows users to take assessments, view results, and manage their progress. The app is built with Flutter and follows best practices for state management and UI design.
-
-## Features
-
-- User authentication and onboarding
-- Fetch and display assessments from a remote API
-- Submit answers and receive instant feedback
-- View assessment history and scores
-- Responsive UI for mobile devices
-
-## Screenshots
-
-<!-- Add screenshots here -->
-<!-- ![Home Screen](screenshots/home.png) -->
-
-## API Used
-
-- **Assessment API**: Provides assessment questions, options, and result submission endpoints.
-  - Base URL: `https://your-api-url.com`
-  - Endpoints:
-    - `/assessments` - Fetch list of assessments
-    - `/submit` - Submit answers and get results
-
-## Packages Used
-
-- [`http`](https://pub.dev/packages/http): For making network requests
-- [`provider`](https://pub.dev/packages/provider): State management
-- [`flutter_secure_storage`](https://pub.dev/packages/flutter_secure_storage): Securely store user tokens
-- [`shared_preferences`](https://pub.dev/packages/shared_preferences): Store simple app data
-- [`flutter_svg`](https://pub.dev/packages/flutter_svg): SVG image support
-- [`google_fonts`](https://pub.dev/packages/google_fonts): Custom fonts
-
-## Getting Started
-
-To get a local copy up and running, follow these steps:
-
-1. **Clone the repository:**
-
-   ```bash
-   git clone https://github.com/yourusername/assessment_app.git
-   cd assessment_app
-   ```
-
-2. **Install dependencies:**
-
-   ```bash
-   flutter pub get
-   ```
-
-3. **Run the app:**
-   ```bash
-   flutter run
-   ```
-
-## Project Structure
-
-```
-lib/
-├── main.dart
-├── models/
-├── screens/
-├── services/
-├── providers/
-├── widgets/
-```
-
-- `models/`: Data models for assessments and users
-- `screens/`: UI screens
-- `services/`: API and storage services
-- `providers/`: State management
-- `widgets/`: Reusable UI components
-
-## How to Run
-
-- Ensure you have Flutter installed. See the [Flutter installation guide](https://docs.flutter.dev/get-started/install).
-- Run `flutter pub get` to install dependencies.
-- Use `flutter run` to launch the app on your device or emulator.
-
-## Contributing
-
-Contributions are welcome! Please open issues and submit pull requests for improvements.
-
-## License
-
-This project is licensed under the MIT License.
+A cross-platform Flutter application with a Node.js (TypeScript) backend for managing users, displaying weather and quotes, and integrating Google Gemini AI.
 
 ---
 
-For more information, see the [Flutter documentation](https://docs.flutter.dev/).
+## 📋 Table of Contents
+
+- [Overview](#overview)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Folder Structure](#folder-structure)
+- [APIs Used](#apis-used)
+- [Packages Used](#packages-used)
+
+---
+
+## 📖 Overview
+
+**Assessment App** is a full-stack project developed as part of the MIM Studio interview process. It includes a Flutter frontend and a Node.js backend built with TypeScript and PostgreSQL. The app enables user authentication, displays dynamic content from external APIs, and demonstrates AI capabilities via Google Gemini.
+
+---
+
+## 🚀 Features
+
+### Frontend (Flutter)
+
+- Login and Signup screens with validation
+- Encrypted Passwords.
+- Token-based authentication and secure storage
+- Fetch and display:
+  - Weather info (by city)
+  - Motivational quote
+  - All registered users in tabular view
+- AI chat using Google Gemini
+- Clean, responsive UI
+- Error handling and loading indicators
+
+### Backend (Node.js + TypeScript)
+
+- REST API using Express
+- PostgreSQL database integration
+- JWT authentication (`/signup`, `/login`)
+- Secured routes for:
+  - `/weather?city=YourCity`
+  - `/quote`
+  - `/gemini` (text generation)
+- API integrations for weather, quotes, and Gemini AI
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+- Flutter
+- Dart
+- Provider (state management)
+
+### Backend
+
+- Node.js with TypeScript
+- Express.js
+- PostgreSQL
+- JWT for authentication
+
+---
+
+## 📁 Folder Structure (Frontend)
+
+lib/
+├── clients/
+├── components/
+│ ├── custom_button.dart
+│ └── custom_text_field.dart
+├── helpers/
+│ ├── colors.dart
+│ ├── constants.dart
+│ ├── endpoints.dart
+│ └── sp_helper.dart
+├── models/
+│ ├── quote.dart
+│ └── user.dart
+├── providers/
+│ ├── auth_provider/
+│ ├── quote_provider/
+│ ├── user_provider/
+│ └── app_provider_container.dart
+├── services/
+│ ├── auth_service.dart
+│ ├── quote_service.dart
+│ └── user_service.dart
+├── views/
+└── main.dart
+
+---
+
+## 🔌 APIs Used
+
+- [OpenWeatherMap API](https://openweathermap.org/api) – Weather information
+- [Quotable API](https://github.com/lukePeavey/quotable) – Motivational quotes
+- [Google Gemini API](https://ai.google.dev/) – Text generation
+- Custom backend endpoints:
+  - `/signup`, `/login`
+  - `/weather?city=`
+  - `/quote`
+  - `/gemini`
+
+---
+
+## 📦 Packages Used (Flutter)
+
+- [cupertino_icons](https://pub.dev/packages/cupertino_icons): iOS style icons
+- [dash_chat_2](https://pub.dev/packages/dash_chat_2): Chat UI for Flutter
+- [dio](https://pub.dev/packages/dio): Powerful HTTP client
+- [flutter](https://flutter.dev/): Flutter SDK
+- [flutter_gemini](https://pub.dev/packages/flutter_gemini): Google Gemini AI integration
+- [flutter_riverpod](https://pub.dev/packages/flutter_riverpod): State management
+- [flutter_secure_storage](https://pub.dev/packages/flutter_secure_storage): Secure key-value storage
+- [image_picker](https://pub.dev/packages/image_picker): Image selection from gallery/camera
+- [intl](https://pub.dev/packages/intl): Internationalization and localization
+- [riverpod_annotation](https://pub.dev/packages/riverpod_annotation): Riverpod code generation
+- [shimmer](https://pub.dev/packages/shimmer): Loading shimmer effect
+- [talker_dio_logger](https://pub.dev/packages/talker_dio_logger): Dio logging for debugging
+- [talker_flutter](https://pub.dev/packages/talker_flutter): Logging and error tracking
+- [weather](https://pub.dev/packages/weather): Weather API client
+
+---
