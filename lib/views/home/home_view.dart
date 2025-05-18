@@ -3,6 +3,7 @@ import 'package:assessment_app/views/gemini/ai_view.dart';
 
 import 'package:assessment_app/views/quotes/quotes_view.dart';
 import 'package:assessment_app/views/test_view.dart';
+import 'package:assessment_app/views/users/users_view.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatefulWidget {
@@ -33,10 +34,27 @@ class _HomeViewState extends State<HomeView> {
       appBar: AppBar(
         title: Text(
           'MIM Studio',
-          style: TextStyle(fontWeight: FontWeight.w600),
+          style: TextStyle(
+            fontWeight: FontWeight.w600,
+            color: AppColors.secondaryColor,
+          ),
         ),
         centerTitle: true,
         backgroundColor: AppColors.primaryColor,
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => UsersView()),
+              );
+            },
+            icon: Icon(
+              Icons.account_circle_outlined,
+              color: AppColors.secondaryColor,
+            ),
+          ),
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
