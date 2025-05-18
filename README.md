@@ -1,6 +1,6 @@
 # Important Note
 
-Plase see the branch other than master for Full COde.
+Plase see the branch other than master for Full Code.
 
 
 # Assessment App
