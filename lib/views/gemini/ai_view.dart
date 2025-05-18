@@ -1,3 +1,4 @@
+import 'package:assessment_app/helpers/colors.dart';
 import 'package:dash_chat_2/dash_chat_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
@@ -24,7 +25,7 @@ class _AiViewState extends State<AiView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: Text("Gemini AI")), body: _buildUI());
+    return Scaffold(body: _buildUI());
   }
 
   Widget _buildUI() {
@@ -32,6 +33,9 @@ class _AiViewState extends State<AiView> {
       currentUser: currentUser,
       onSend: _sendMessage,
       messages: messages,
+      messageOptions: MessageOptions(
+        currentUserContainerColor: AppColors.primaryColor,
+      ),
     );
   }
 
