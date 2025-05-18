@@ -20,6 +20,7 @@ class _SignInViewState extends State<SignInView> {
   late TextEditingController _passwordController;
 
   bool _isLoading = false;
+  bool _showPassword = false;
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -78,11 +79,7 @@ class _SignInViewState extends State<SignInView> {
                   CustomTextField(
                     controller: _passwordController,
                     hint: "Password",
-                    obsecureText: true,
-                    suffixIcon: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.visibility_off),
-                    ),
+                    obsecureText: !_showPassword,
                     onValidator: (value) {
                       if (value!.isEmpty) {
                         return "Password is required";
@@ -95,6 +92,20 @@ class _SignInViewState extends State<SignInView> {
                       }
                       return null;
                     },
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          _showPassword = !_showPassword;
+                        });
+                      },
+                      icon:
+                          _showPassword
+                              ? Icon(
+                                Icons.visibility,
+                                color: AppColors.primaryColor,
+                              )
+                              : Icon(Icons.visibility_off),
+                    ),
                   ),
 
                   SizedBox(height: 12),

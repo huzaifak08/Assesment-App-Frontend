@@ -12,4 +12,8 @@ class SpHelper {
   Future<String?> getAuthToken() async {
     return await storage.read(key: authKey);
   }
+
+  void clearAllTokens() async {
+    await storage.deleteAll();
+  }
 }

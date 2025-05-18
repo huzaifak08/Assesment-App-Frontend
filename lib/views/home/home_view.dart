@@ -1,4 +1,6 @@
 import 'package:assessment_app/helpers/colors.dart';
+import 'package:assessment_app/helpers/sp_helper.dart';
+import 'package:assessment_app/views/auth/sign_in_view.dart';
 import 'package:assessment_app/views/gemini/ai_view.dart';
 
 import 'package:assessment_app/views/quotes/quotes_view.dart';
@@ -51,15 +53,20 @@ class _HomeViewState extends State<HomeView> {
         backgroundColor: AppColors.primaryColor,
         actions: [
           OutlinedButton(
-            onPressed: () {},
-            child: Text('Log out', style: TextStyle(fontSize: 14)),
+            onPressed: () async {
+              SpHelper().clearAllTokens();
+
+              Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(builder: (context) => SignInView()),
+                (Route<dynamic> route) => false,
+              );
+            },
             style: OutlinedButton.styleFrom(
-              // minimumSize: Size(80, 36), // Adjust width and height as needed
               padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
               foregroundColor: AppColors.secondaryColor,
               side: BorderSide(color: AppColors.whiteColor),
-              // textStyle: TextStyle(fontSize: 14),
             ),
+            child: Text('Log out', style: TextStyle(fontSize: 14)),
           ),
           IconButton(
             onPressed: () {

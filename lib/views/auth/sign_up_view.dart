@@ -18,6 +18,7 @@ class SignUpView extends StatefulWidget {
 class _SignUpViewState extends State<SignUpView> {
   final _formKey = GlobalKey<FormState>();
   bool _isLoading = false;
+  bool _showPassword = false;
 
   late TextEditingController _nameController;
   late TextEditingController _emailController;
@@ -68,7 +69,17 @@ class _SignUpViewState extends State<SignUpView> {
                   ),
                   SizedBox(height: 12),
 
-                  CustomTextField(hint: "Name", controller: _nameController),
+                  CustomTextField(
+                    hint: "Name",
+                    controller: _nameController,
+                    onValidator: (value) {
+                      if (value!.isEmpty) {
+                        return "Name is required";
+                      }
+
+                      return null;
+                    },
+                  ),
 
                   CustomTextField(
                     hint: "Email Address",
@@ -88,7 +99,7 @@ class _SignUpViewState extends State<SignUpView> {
 
                   CustomTextField(
                     hint: "New Password",
-                    obsecureText: true,
+                    obsecureText: !_showPassword,
                     controller: _passwordController,
                     onValidator: (value) {
                       if (value!.isEmpty) {
@@ -98,10 +109,24 @@ class _SignUpViewState extends State<SignUpView> {
                       } else if (!RegExp(
                         r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$",
                       ).hasMatch(value)) {
-                        return "Password must contain at least 1 uppercase letter, 1 lowercase letter, and 1 number";
+                        return "Password must have upper, lower, and number";
                       }
                       return null;
                     },
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          _showPassword = !_showPassword;
+                        });
+                      },
+                      icon:
+                          _showPassword
+                              ? Icon(
+                                Icons.visibility,
+                                color: AppColors.primaryColor,
+                              )
+                              : Icon(Icons.visibility_off),
+                    ),
                   ),
 
                   CustomTextField(
