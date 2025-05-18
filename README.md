@@ -1,3 +1,8 @@
+# Important Note
+
+Plase see the branch other than master for Full COde.
+
+
 # Assessment App
 
 A cross-platform Flutter application with a Node.js (TypeScript) backend for managing users, displaying weather and quotes, and integrating Google Gemini AI.
